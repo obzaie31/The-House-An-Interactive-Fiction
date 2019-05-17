@@ -39,5 +39,54 @@ playroom.addItem(chess)
 bathroom.addItem(bathtub)
 bathroom.addItem(mirror)
 
+mirror.kick = function () {
+  addLine("The mirror breaks.");
+}
+vase.kick = function () {
+  addLine("The vase breaks.");
+}
+shovel.kick = function () {
+  addLine("The shovel breaks.");
+}
+car.kick = function () {
+  addLine("The car scratches.");
+}
+
 // Put them in their spots
 player.move(hallway);
+
+//1.) Create the function & the search term
+let sneakaction = /sneak/;
+let sneak = function(action, player, object) {
+  if (action == 'sneak') {
+    let text = "";
+    addLine("You are moving slow.");
+  }
+  return player
+}
+addAction(sneakaction, sneak);
+
+let runaction = /run/;
+let run = function(action, player, object) {
+  if (action == 'run') {
+    let text = "";
+    addLine("You are sweaty.");
+  }
+  return player
+}
+addAction(runaction, run);
+
+//To create a function that interacts with an object...
+let kickAction = /kick/;
+let kick = function(action, player, object) {
+  if (action == 'kick') {
+    try {
+      throw object.kick();
+    }
+    catch(err) {
+      addLine("Your foot hurts.")
+    }
+  }
+  return player;
+}
+addAction(kickAction, kick);
